@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东海龙网大智慧-金融信息服务与智能决策支持平台</title>
+    <meta name="description" content="东海龙网大智慧是一个集市场数据、财经资讯、智能分析与投资决策辅助于一体的综合信息服务平台，为投资者提供专业、严谨的市场参考与工具支持。">
+    <meta name="keywords" content="东海龙网大智慧,金融信息,智能分析,投资决策,市场数据,财经资讯,金融信息服务">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: #f5f7fa;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部信息条 */
+        .top-bar {
+            background-color: #0a1a2f;
+            color: #8fa3bf;
+            font-size: 13px;
+            padding: 8px 0;
+            border-bottom: 1px solid #1a2d44;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .top-bar a {
+            color: #8fa3bf;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.2s;
+        }
+
+        .top-bar a:hover {
+            color: #ffffff;
+        }
+
+        /* 页眉 */
+        .site-header {
+            background: linear-gradient(135deg, #0d1f38 0%, #1a3a5c 100%);
+            padding: 20px 0;
+            border-bottom: 3px solid #2e6db4;
+        }
+
+        .site-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(145deg, #2e6db4, #1e4d85);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 14px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(46, 109, 180, 0.3);
+        }
+
+        .logo-text h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 13px;
+            color: #7ea6d4;
+            letter-spacing: 2px;
+        }
+
+        /* 导航 */
+        .main-nav {
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .main-nav .container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .main-nav ul li a {
+            display: block;
+            padding: 14px 22px;
+            text-decoration: none;
+            color: #33475b;
+            font-size: 15px;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .main-nav ul li a:hover,
+        .main-nav ul li a.active {
+            color: #2e6db4;
+            border-bottom-color: #2e6db4;
+            background-color: #f0f5fb;
+        }
+
+        .nav-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-sm {
+            background-color: #2e6db4;
+            color: #ffffff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .btn-sm:hover {
+            background-color: #1e5a9e;
+        }
+
+        /* Hero 首屏 */
+        .hero {
+            background: linear-gradient(145deg, #0d1f38 0%, #1a3a5c 60%, #2e6db4 100%);
+            padding: 70px 0 80px;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(46, 109, 180, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1 1 500px;
+        }
+
+        .hero-text h2 {
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero-text h2 span {
+            color: #6ab0e8;
+        }
+
+        .hero-text p {
+            font-size: 17px;
+            color: #c3d5e8;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: #2e6db4;
+            color: #ffffff;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 2px solid #2e6db4;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            border-color: #ffffff;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #ffffff;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .num {
+            font-size: 30px;
+            font-weight: 700;
+            color: #6ab0e8;
+        }
+
+        .stat-item .label {
+            font-size: 13px;
+            color: #8fa3bf;
+            margin-top: 4px;
+        }
+
+        /* 功能区 */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h3 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #1e2a3a;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+            margin-bottom: 10px;
+        }
+
+        .section-title h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #2e6db4, #6ab0e8);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #64748b;
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 核心功能卡片 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 35px 30px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #2e6db4;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(145deg, #e8f0fa, #d4e4f0);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #2e6db4;
+        }
+
+        .feature-card h4 {
+            font-size: 19px;
+            margin-bottom: 12px;
+            color: #1e2a3a;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* 数据与资讯双栏 */
+        .dual-column {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .data-panel {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #f0f5fb;
+            padding-bottom: 15px;
+        }
+
+        .panel-header h4 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .panel-header a {
+            color: #2e6db4;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 14px 10px;
+            text-align: left;
+            border-bottom: 1px solid #f0f5fb;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            background-color: #f8fafc;
+            color: #64748b;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .trend-up {
+            color: #dc2626;
+        }
+
+        .trend-down {
+            color: #16a34a;
+        }
+
+        .news-list {
+            list-style: none;
+        }
+
+        .news-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid #f0f5fb;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .news-list li:last-child {
+            border-bottom: none;
+        }
+
+        .news-tag {
+            background-color: #e8f0fa;
+            color: #2e6db4;
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-top: 3px;
+            font-weight: 500;
+        }
+
+        .news-list a {
+            color: #1e2a3a;
+            text-decoration: none;
+            font-size: 15px;
+            line-height: 1.5;
+            transition: color 0.2s;
+        }
+
+        .news-list a:hover {
+            color: #2e6db4;
+        }
+
+        .news-time {
+            color: #94a3b8;
+            font-size: 12px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* 分析工具 */
+        .tools-section {
+            background-color: #eef2f7;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .tool-item {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tool-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(46, 109, 180, 0.12);
+            border-color: #2e6db4;
+        }
+
+        .tool-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .tool-item h5 {
+            font-size: 16px;
+            color: #1e2a3a;
+            margin-bottom: 6px;
+        }
+
+        .tool-item p {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* 使用指南 */
+        .guide-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .step-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px 25px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .step-num {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(145deg, #2e6db4, #1e4d85);
+            color: #ffffff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .step-card h5 {
+            font-size: 17px;
+            margin-bottom: 10px;
+            color: #1e2a3a;
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        /* FAQ */
+        .faq-section {
+            background-color: #ffffff;
+        }
+
+        .faq-list {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .faq-item summary {
+            padding: 20px 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e2a3a;
+            background-color: #f8fafc;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+
+        .faq-item summary:hover {
+            background-color: #eef2f7;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 22px;
+            color: #2e6db4;
+            font-weight: 400;
+        }
+
+        .faq-item[open] summary::after {
+            content: '−';
+        }
+
+        .faq-item .faq-content {
+            padding: 20px 25px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        /* 风险提示 */
+        .risk-notice {
+            background-color: #fff8ed;
+            border-left: 4px solid #f59e0b;
+            padding: 20px 25px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #78350f;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            background-color: #0a1a2f;
+            color: #8fa3bf;
+            padding: 50px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h5 {
+            color: #ffffff;
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #8fa3bf;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1a2d44;
+            padding-top: 25px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dual-column {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .guide-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h2 {
+                font-size: 28px;
+            }
+
+            .hero {
+                padding: 50px 0;
+            }
+
+            .main-nav ul {
+                width: 100%;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .main-nav ul li a {
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+
+            .nav-right {
+                margin-left: 0;
+                width: 100%;
+                padding: 10px 0;
+                justify-content: center;
+                border-top: 1px solid #f0f5fb;
+            }
+
+            .stat-item .num {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h2 {
+                font-size: 24px;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .section-title h3 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部信息条 -->
+    <div class="top-bar">
+        <div class="container">
+            <span>东海龙网大智慧 - 让信息创造价值</span>
+            <div>
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+                <a href="#">帮助中心</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页眉 -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-area">
+                <div class="logo-icon">东</div>
+                <div class="logo-text">
+                    <h1>东海龙网大智慧</h1>
+                    <p>EAST DRAGON FINANCE</p>
+                </div>
+            </div>
+            <div class="hero-stats" style="margin-top: 0;">
+                <div class="stat-item">
+                    <div class="num">20+</div>
+                    <div class="label">专业数据源</div>
+                </div>
+                <div class="stat-item">
+                    <div class="num">50+</div>
+                    <div class="label">分析工具</div>
+                </div>
+                <div class="stat-item">
+                    <div class="num">10000+</div>
+                    <div class="label">每日更新</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 导航 -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">市场数据</a></li>
+                <li><a href="#">财经资讯</a></li>
+                <li><a href="#">智能分析</a></li>
+                <li><a href="#">投资工具</a></li>
+                <li><a href="#">研究报告</a></li>
+                <li><a href="#">用户社区</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="#" class="btn-sm">快速体验</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero 首屏 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <h2>东海龙网大智慧<br><span>洞悉市场脉搏</span> 助力理性决策</h2>
+                <p>一个集市场数据、深度资讯、智能分析工具于一体的综合金融信息服务平台。我们专注于为投资者提供清晰、严谨、及时的市场参考，帮助您在信息海洋中快速获取有价值的决策依据。</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary">开始探索</a>
+                    <a href="#" class="btn-outline">了解核心功能</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心功能 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h3>平台核心能力</h3>
+                <p>从数据采集到智能分析，构建完整的投资决策支持链路</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>多维市场数据</h4>
+                    <p>覆盖股票、基金、期货、债券等多个市场的基础数据与衍生指标，提供实时行情、历史走势与统计特征查询，数据接口稳定可靠。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h4>智能分析引擎</h4>
+                    <p>基于统计模型与量化方法，提供趋势研判、波动分析、相关性检验等工具，帮助用户从数据中提取有效信号，辅助投资研究。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📰</div>
+                    <h4>深度财经资讯</h4>
+                    <p>系统梳理宏观经济、行业动态与前沿政策，提供多维度的信息聚合与解读，让您快速把握影响市场的重要变量。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h4>可视化图表</h4>
+                    <p>提供交互式K线、分时图、资金流向图等多种可视化组件，将复杂数据转化为直观图形，便于快速理解市场运行状态。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📑</div>
+                    <h4>策略研究支持</h4>
+                    <p>内置因子库与回测框架，支持用户自定义逻辑进行历史验证，有助于优化投资思路与风险控制策略。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h4>风险预警提示</h4>
+                    <p>根据用户设定的关注条件，提供波动异动、指标超阈值等提醒服务，帮助及时关注潜在风险变化。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据与资讯 -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="dual-column">
+                <div class="data-panel">
+                    <div class="panel-header">
+                        <h4>市场数据概览</h4>
+                        <a href="#">查看全部 →</a>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>指标</th>
+                                <th>最新值</th>
+                                <th>涨跌</th>
+                                <th>更新时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>综合指数</td>
+                                <td>3,452.87</td>
+                                <td class="trend-up">+0.62%</td>
+                                <td>15:30</td>
+                            </tr>
+                            <tr>
+                                <td>科技板块</td>
+                                <td>2,108.32</td>
+                                <td class="trend-up">+1.24%</td>
+                                <td>15:30</td>
+                            </tr>
+                            <tr>
+                                <td>金融板块</td>
+                                <td>4,876.55</td>
+                                <td class="trend-down">-0.18%</td>
+                                <td>15:30</td>
+                            </tr>
+                            <tr>
+                                <td>商品指数</td>
+                                <td>1,234.09</td>
+                                <td class="trend-up">+0.35%</td>
+                                <td>15:30</td>
+                            </tr>
+                            <tr>
+                                <td>债券综合</td>
+                                <td>2,092.44</td>
+                                <td class="trend-up">+0.08%</td>
+                                <td>15:30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="risk-notice">
+                        ⚠️ 以上数据仅供研究参考，不构成任何投资建议。市场有风险，决策需谨慎。
+                    </div>
+                </div>
+                <div class="data-panel">
+                    <div class="panel-header">
+                        <h4>最新财经动态</h4>
+                        <a href="#">更多资讯 →</a>
+                    </div>
+                    <ul class="news-list">
+                        <li>
+                            <span class="news-tag">宏观</span>
+                            <div>
+                                <a href="#">重要经济数据发布，市场关注后续政策走向</a>
+                                <span class="news-time">30分钟前</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="news-tag">行业</span>
+                            <div>
+                                <a href="#">科技产业迎来新一轮创新周期，资金持续关注</a>
+                                <span class="news-time">1小时前</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="news-tag">公司</span>
+                            <div>
+                                <a href="#">多家企业公布新季度业绩，市场反应积极</a>
+                                <span class="news-time">2小时前</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="news-tag">国际</span>
+                            <div>
+                                <a href="#">国际市场波动加大，投资者关注风险因素</a>
+                                <span class="news-time">3小时前</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="news-tag">政策</span>
+                            <div>
+                                <a href="#">相关部门发布指导意见，促进市场健康发展</a>
+                                <span class="news-time">4小时前</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 分析工具 -->
+    <section class="section tools-section">
+        <div class="container">
+            <div class="section-title">
+                <h3>智能分析工具集</h3>
+                <p>多种专业工具，辅助您从不同维度研究市场</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-item">
+                    <span class="tool-icon">📐</span>
+                    <h5>趋势研判</h5>
+                    <p>识别价格运行主要方向</p>
+                </div>
+                <div class="tool-item">
+                    <span class="tool-icon">📏</span>
+                    <h5>波动率分析</h5>
+                    <p>衡量市场波动特征</p>
+                </div>
+                <div class="tool-item">
+                    <span class="tool-icon">🔗</span>
+                    <h5>相关性研究</h5>
+                    <p>分析资产间联动关系</p>
+                </div>
+                <div class="tool-item">
+                    <span class="tool-icon">🧮</span>
+                    <h5>指标计算器</h5>
+                    <p>快速计算常用技术指标</p>
+                </div>
+                <div class="tool-item">
+                    <span class="tool-icon">🗂️</span>
+                    <h5>财务分析</h5>
+                    <p>解读企业财务健康度</p>
+                </div>
+                <div class="tool-item">
+                    <span class="tool-icon">🔄</span>
+                    <h5>回测框架</h5>
+                    <p>验证历史策略表现</p>
+                </div>
+                <div class="tool-item">
+                    <span class="tool-icon">📊</span>
+                    <h5>资金流向</h5>
+                    <p>观察资金进出动态</p>
+                </div>
+                <div class="tool-item">
+                    <span class="tool-icon">📋</span>
+                    <h5>自选管理</h5>
+                    <p>定制个人关注列表</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用指南 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h3>快速上手指南</h3>
+                <p>无论您是初次接触还是资深用户，都能快速掌握使用流程</p>
+            </div>
+            <div class="guide-steps">
+                <div class="step-card">
+                    <span class="step-num">1</span>
+                    <h5>注册与登录</h5>
+                    <p>创建账户并完成基础设置，即可使用平台大部分免费功能。注册过程简单快捷，仅需基本信息。</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-num">2</span>
+                    <h5>设置关注标的</h5>
+                    <p>在“自选管理”中添加您关心的证券或指数，首页将为您聚合相关行情数据与最新动态。</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-num">3</span>
+                    <h5>使用分析工具</h5>
+                    <p>进入“智能分析”模块，选择所需工具，输入参数后即可获得可视化结果与简要解读。</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-num">4</span>
+                    <h5>订阅预警服务</h5>
+                    <p>根据个人策略设定价格或指标阈值，当市场触及条件时，将通过站内消息或邮件及时提醒。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h3>常见问题解答</h3>
+                <p>我们整理了用户最关心的一些问题，希望能帮助您更好地使用平台</p>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>东海龙网大智慧是什么类型的平台？</summary>
+                    <div class="faq-content">
+                        <p>东海龙网大智慧是一个综合性的金融信息服务平台，主要提供市场数据查询、财经资讯聚合、智能分析工具、投资研究辅助等功能。平台面向不同层次的投资者，致力于提供清晰、专业、客观的信息服务，帮助用户更好地理解市场动态和进行决策参考。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>平台的数据来源可靠吗？</summary>
+                    <div class="faq-content">
+                        <p>我们非常重视数据质量。平台的数据来源于公开市场信息、交易所发布数据以及多家专业数据服务商提供的授权数据。所有数据均经过多重校验流程，确保准确性。同时，我们会定期更新数据采集与清洗逻辑，以保障数据的一致性和时效性。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>使用平台需要付费吗？</summary>
+                    <div class="faq-content">
+                        <p>平台提供多个层级的功能。基础的数据查询、部分资讯浏览和若干标准分析工具是免费向所有注册用户开放的。更高级的数据频次、专业分析模块、深度研究报告等增值服务，会根据实际使用情况提供不同的订阅方案。具体收费项目会在功能页面明确标示。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>智能分析工具能保证投资盈利吗？</summary>
+                    <div class="faq-content">
+                        <p>不能。任何分析工具都只能作为研究辅助，提供基于历史数据和统计模型的参考结果。金融市场受多种复杂因素影响，存在不确定性。平台的所有分析结果均不构成投资建议，投资者应结合自身情况独立做出判断，并充分认识风险。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>如何保障我的账户信息安全？</summary>
+                    <div class="faq-content">
+                        <p>我们采用行业标准的加密技术保护用户数据传输和存储安全，包括但不限于SSL加密、敏感字段脱敏、多因素认证等。同时，我们制定了严格的内部数据访问控制政策，未经授权，任何人员无法获取您的个人信息。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>移动端可以正常使用吗？</summary>
+                    <div class="faq-content">
+                        <p>可以。平台采用响应式设计，无论是在电脑、平板还是手机上，只要使用现代浏览器访问，都可以获得良好的浏览体验。针对部分复杂分析功能，建议在屏幕较大的设备上操作以获得更好的交互效果。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 风险提示 -->
+    <section class="section" style="padding-top: 0; padding-bottom: 40px;">
+        <div class="container">
+            <div class="risk-notice" style="background-color: #fef2f2; border-left-color: #dc2626; color: #7f1d1d;">
+                <strong>重要风险提示：</strong> 本平台所有内容、数据、工具及分析结果仅供用户作为信息参考和研究之用，不构成任何形式的投资建议、收益承诺或交易引导。金融市场存在较大不确定性，用户在做出任何投资决策前，应当充分了解相关风险，结合自身风险承受能力独立审慎判断。过往表现不代表未来结果。
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>关于我们</h5>
+                    <ul>
+                        <li><a href="#">平台简介</a></li>
+                        <li><a href="#">发展历程</a></li>
+                        <li><a href="#">团队介绍</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>产品服务</h5>
+                    <ul>
+                        <li><a href="#">市场数据</a></li>
+                        <li><a href="#">智能分析</a></li>
+                        <li><a href="#">财经资讯</a></li>
+                        <li><a href="#">研究报告</a></li>
+                        <li><a href="#">工具下载</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>帮助支持</h5>
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">使用教程</a></li>
+                        <li><a href="#">API文档</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>法律条款</h5>
+                    <ul>
+                        <li><a href="#">用户协议</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">数据授权说明</a></li>
+                        <li><a href="#">知识产权</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 东海龙网大智慧 版权所有 | 本平台提供的信息仅供参考，不构成投资建议</p>
+                <p style="margin-top: 8px; font-size: 12px;">市场有风险，投资需谨慎</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+                      </html>
